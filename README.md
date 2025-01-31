@@ -6,6 +6,41 @@ Vòng đời trong flutter mình có thể phân biệt qua 3 loại vòng đờ
 2. **App Lifecycle** (vòng đời của ứng dụng, như khi ứng dụng chạy nền, bị tạm dừng)?  
 3. **Cách sử dụng lifecycle để quản lý trạng thái ứng dụng?**  
 
+## 1. **Vòng đời của Widget** trong Flutter
+
+### **1️⃣ StatelessWidget (Không có trạng thái)**
+- Chỉ có phương thức `build()`
+- Không thay đổi trạng thái sau khi tạo
+- Dùng cho UI cố định
+
+```mermaid
+graph TD
+  A[StatelessWidget] -->|Gọi hàm build()| B[Hiển thị UI]
+  B -->|Không thay đổi| B
+```
+
+### **2️⃣ StatefulWidget (Có trạng thái)**
+- Có thể thay đổi trạng thái
+- Gồm 2 phần: **StatefulWidget** (chỉ tạo một lần) và **State** (quản lý trạng thái)
+- Gồm 6 giai đoạn chính trong vòng đời
+
+![image](https://github.com/user-attachments/assets/65512301-8539-45da-87e8-f0f63ce0da3d)
+
+### 🔍 **Hành vi ứng dụng:**
+1. **Khi khởi tạo**:  
+   `createState()` → `initState()` → `didChangeDependencies()` → `build()`
+2. **Khi nhấn nút "Increase Counter"**:  
+   Chỉ có `build()` được gọi lại.
+3. **Khi widget cha thay đổi**:  
+   `didUpdateWidget()` chạy.
+4. **Khi đóng ứng dụng**:  
+   `dispose()` chạy để giải phóng tài nguyên.
+
+
+
+
+
+
 
 ## 2. **App Lifecycle**
 
