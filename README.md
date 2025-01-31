@@ -129,7 +129,7 @@ graph TD
   
   %% Lắng nghe trạng thái ứng dụng
   B -->|didChangeAppLifecycleState| C[Kiểm tra trạng thái app]
-  C -->|App thoát ra màn hình chính| D[Tạm dừng Video hoặc API]
+  C -->|App thoát ra màn hình chính (nhưng vẫn chạy trong hệ thống)| D[Tạm dừng Video hoặc API]
   C -->|App mở lại| E[Tiếp tục Video hoặc API]
   C -->|App bị đóng| F[Giải phóng bộ nhớ]
 
@@ -138,7 +138,7 @@ graph TD
   E -->|Gọi play| E1[Video tiếp tục phát]
 
   %% Lưu & khôi phục trạng thái
-  C -->|App thoát ra màn hình chính| G[Lưu trạng thái với SharedPreferences]
+  C -->|App thoát ra màn hình chính (nhưng vẫn chạy trong hệ thống)| G[Lưu trạng thái với SharedPreferences]
   C -->|App mở lại| H[Tải lại trạng thái]
   
   %% Hoàn tất vòng đời
