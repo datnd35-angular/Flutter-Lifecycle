@@ -15,7 +15,7 @@ Vòng đời trong flutter mình có thể phân biệt qua 3 loại vòng đờ
 
 ```mermaid
 graph TD
-  A[StatelessWidget] -->|Gọi hàm build()| B[Hiển thị UI]
+  A[StatelessWidget] -->|Gọi build| B[Hiển thị UI]
   B -->|Không thay đổi| B
 ```
 
