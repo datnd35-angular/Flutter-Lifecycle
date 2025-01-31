@@ -24,8 +24,17 @@ graph TD
 - Gồm 2 phần: **StatefulWidget** (chỉ tạo một lần) và **State** (quản lý trạng thái)
 - Gồm 6 giai đoạn chính trong vòng đời
 
-![image](https://github.com/user-attachments/assets/65512301-8539-45da-87e8-f0f63ce0da3d)
-
+```mermaid
+graph TD
+  A[StatefulWidget] -->|createState| B[State_Object]
+  B -->|initState| C[Khởi tạo biến và sự kiện]
+  C -->|didChangeDependencies| D[Xử lý khi phụ thuộc thay đổi]
+  D -->|build| E[Hiển thị UI]
+  E -->|Người dùng nhấn nút: setState| E
+  E -->|Widget cha thay đổi| F[didUpdateWidget]
+  E -->|Widget bị xóa| G[dispose]
+  G -->|Dọn dẹp tài nguyên| H[Hoàn thành vòng đời]
+```
 ### 🔍 **Hành vi ứng dụng:**
 1. **Khi khởi tạo**:  
    `createState()` → `initState()` → `didChangeDependencies()` → `build()`
