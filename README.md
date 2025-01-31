@@ -115,13 +115,8 @@ graph TD
 Sử dụng `WidgetsBindingObserver` để lắng nghe thay đổi trạng thái như trong đoạn code mẫu bạn đã cung cấp.
 
 ## 3. **Cách sử dụng lifecycle để quản lý trạng thái ứng dụng**
-Lỗi này xuất hiện do Mermaid không hỗ trợ dấu `()` trong nhãn đường dẫn. Để khắc phục, ta cần loại bỏ dấu ngoặc tròn khỏi nhãn trong sơ đồ.  
 
-Dưới đây là **phiên bản đã sửa lỗi**:  
 
----
-
-### 📌 **Sơ đồ Mermaid về Lifecycle trong Flutter**  
 
 ```mermaid
 graph TD
@@ -157,4 +152,25 @@ graph TD
 4️⃣ **Lưu & khôi phục trạng thái**  
    - Khi ứng dụng thoát ra màn hình chính, trạng thái (ví dụ: **counter**) được lưu vào **SharedPreferences**.  
    - Khi ứng dụng mở lại, trạng thái được tải lại.  
-5️⃣ **Khi ứng dụng bị đóng**, `dispose` được gọi để giải phóng tài nguyên.  
+5️⃣ **Khi ứng dụng bị đóng**, `dispose` được gọi để giải phóng tài nguyên.
+
+# Lưu ý
+## 🚀 **Phân biệt "App Lifecycle" và "Cách sử dụng lifecycle để quản lý trạng thái ứng dụng"**  
+
+| **Khía cạnh**                                    | **App Lifecycle**                                               | **Cách sử dụng lifecycle để quản lý trạng thái ứng dụng** |
+|--------------------------------------------------|----------------------------------------------------------------|--------------------------------------------------|
+| **Định nghĩa**                                  | Là các trạng thái mà ứng dụng Flutter trải qua khi hoạt động.  | Là cách bạn tận dụng các trạng thái lifecycle để điều khiển luồng xử lý trong app. |
+| **Trạng thái liên quan**                        | `resumed`, `paused`, `inactive`, `detached`                    | Dừng/phát nhạc, lưu trạng thái khi vào nền, tải dữ liệu khi mở lại,... |
+| **Dùng để làm gì?**                              | Theo dõi trạng thái ứng dụng trong hệ thống.                   | Áp dụng lifecycle để tối ưu trải nghiệm người dùng và quản lý tài nguyên. |
+| **Công cụ sử dụng**                             | `WidgetsBindingObserver`, `didChangeAppLifecycleState()`       | `WidgetsBindingObserver`, `SharedPreferences`, `StreamSubscription`, `Provider`... |
+| **Ví dụ cụ thể**                                | Ứng dụng vào nền, tạm dừng, bị đóng.                           | Dừng phát nhạc khi vào nền, lưu dữ liệu khi thoát, tải lại UI khi quay lại. |
+
+### 🛠 **Mối quan hệ giữa chúng**
+- **App Lifecycle** là lý thuyết, nó chỉ định nghĩa các trạng thái mà ứng dụng trải qua.  
+- **Cách sử dụng lifecycle** là cách bạn tận dụng các trạng thái này để xử lý logic phù hợp.  
+
+📌 **Ví dụ thực tế:**  
+1️⃣ **App Lifecycle (Lý thuyết)**: Khi app vào nền → `paused`  
+2️⃣ **Cách sử dụng lifecycle (Ứng dụng thực tế)**: Khi app vào nền → **Dừng video đang phát**  
+
+💡 **Tóm lại:** "App Lifecycle" chỉ mô tả các trạng thái của ứng dụng, còn "Cách sử dụng lifecycle" là việc áp dụng các trạng thái đó để quản lý trạng thái và tài nguyên trong ứng dụng. 🚀
