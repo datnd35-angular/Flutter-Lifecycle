@@ -129,7 +129,7 @@ graph TD
   
   %% Lắng nghe trạng thái ứng dụng
   B -->|didChangeAppLifecycleState| C[Kiểm tra trạng thái app]
-  C -->|App vào nền| D[Tạm dừng Video hoặc API]
+  C -->|App thoát ra màn hình chính| D[Tạm dừng Video hoặc API]
   C -->|App mở lại| E[Tiếp tục Video hoặc API]
   C -->|App bị đóng| F[Giải phóng bộ nhớ]
 
@@ -138,7 +138,7 @@ graph TD
   E -->|Gọi play| E1[Video tiếp tục phát]
 
   %% Lưu & khôi phục trạng thái
-  C -->|App vào nền| G[Lưu trạng thái với SharedPreferences]
+  C -->|App thoát ra màn hình chính| G[Lưu trạng thái với SharedPreferences]
   C -->|App mở lại| H[Tải lại trạng thái]
   
   %% Hoàn tất vòng đời
@@ -148,13 +148,13 @@ graph TD
 ### 🔍 **Giải thích sơ đồ**  
 1️⃣ **Ứng dụng khởi động** → `initState` chạy, bắt đầu theo dõi trạng thái ứng dụng.  
 2️⃣ **Khi trạng thái ứng dụng thay đổi**, `didChangeAppLifecycleState` được gọi.  
-   - Nếu **ứng dụng vào nền**, video hoặc API bị tạm dừng.  
+   - Nếu **ứng dụng thoát ra màn hình chính**, video hoặc API bị tạm dừng.  
    - Nếu **ứng dụng mở lại**, video hoặc API tiếp tục chạy.  
    - Nếu **ứng dụng bị đóng**, bộ nhớ được giải phóng.  
 3️⃣ **Dừng & tiếp tục phát video**  
-   - Khi vào nền, `pause` được gọi để dừng video.  
+   - Khi ứng dụng thoát ra màn hình chính, `pause` được gọi để dừng video.  
    - Khi mở lại, `play` được gọi để tiếp tục video.  
 4️⃣ **Lưu & khôi phục trạng thái**  
-   - Khi ứng dụng vào nền, trạng thái (ví dụ: **counter**) được lưu vào **SharedPreferences**.  
+   - Khi ứng dụng thoát ra màn hình chính, trạng thái (ví dụ: **counter**) được lưu vào **SharedPreferences**.  
    - Khi ứng dụng mở lại, trạng thái được tải lại.  
 5️⃣ **Khi ứng dụng bị đóng**, `dispose` được gọi để giải phóng tài nguyên.  
