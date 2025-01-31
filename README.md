@@ -165,7 +165,7 @@ graph TD
 | **Công cụ sử dụng**                             | `WidgetsBindingObserver`, `didChangeAppLifecycleState()`       | `WidgetsBindingObserver`, `SharedPreferences`, `StreamSubscription`, `Provider`... |
 | **Ví dụ cụ thể**                                | Ứng dụng vào nền, tạm dừng, bị đóng.                           | Dừng phát nhạc khi vào nền, lưu dữ liệu khi thoát, tải lại UI khi quay lại. |
 
-### 🛠 **Mối quan hệ giữa chúng**
+## 🛠 **Mối quan hệ giữa chúng**
 - **App Lifecycle** là lý thuyết, nó chỉ định nghĩa các trạng thái mà ứng dụng trải qua.  
 - **Cách sử dụng lifecycle** là cách bạn tận dụng các trạng thái này để xử lý logic phù hợp.  
 
